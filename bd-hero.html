@@ -13,18 +13,19 @@
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#" data-step="1" data-intro="This is a tooltip!">Endless Education | Bootstrap Design | hero image header </a>
+    <a class="navbar-brand" href="#" id="step1">Endless Education | Bootstrap Design | hero image header </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav ml-auto">
-        <a class="btn btn-large btn-info nav-item" href="javascript:void(0);" onclick="javascript:introJs().start();">Show me how</a>
+        <a id="step2" class="btn btn-large btn-info nav-item" href="javascript:void(0);" onclick="startIntro();">Show me how</a>
       </div>
     </div>
   </nav>
   <main class="container-fluid">
-    <div class="row">
+    <span id="step3"></span>
+    <div id="step4" class="row">
       <div class="col-xl-12 p-0">
   <picture>
     <source media="(min-width: 1500px)" srcset="https://via.placeholder.com/3000x500.png">
@@ -52,5 +53,42 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/intro.min.js" integrity="sha512-VTd65gL0pCLNPv5Bsf5LNfKbL8/odPq0bLQ4u226UNmT7SzE4xk+5ckLNMuksNTux/pDLMtxYuf0Copz8zMsSA==" crossorigin="anonymous"></script>
+<script type="text/javascript">
+function startIntro(){
+        var intro = introJs();
+          intro.setOptions({
+            steps: [
+              {
+                intro: "Let's walkthrough how Bootstrap enhances this page. Think of Bootstrap as simply a set of CSS styles that you can add to your page."
+              },
+              {
+                element: document.querySelector('#step1'),
+                intro: "This is a navbar. Bootstrap styles the nav element and provides specific classes for additional styling of navbar elements."
+              },
+              {
+                element: document.querySelectorAll('#step2')[0],
+                intro: "This button was created by adding Bootstrap classes (btn btn-large btn-info) to an anchor element",
+                position: 'right'
+              },
+              {
+                element: '#step3',
+                intro: 'The page contents are wrapped in a main element with a class of container-fluid, which allows the image area to stretch across the entire page',
+                position: 'left'
+              },
+              {
+                element: '#step4',
+                intro: "A single row and a set of 12 columns is created to contain the image.",
+                position: 'bottom'
+              },
+              {
+                element: '#step5',
+                intro: 'Get it, use it.'
+              }
+            ]
+          });
+
+          intro.start();
+        }
+</script>
 </body>
 </html>
